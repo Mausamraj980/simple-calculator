@@ -1,10 +1,10 @@
-•⁠  ⁠{
+* {
     box-sizing: border-box;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 body {
-    background-color: #050a30; /* Dark background like the image */
+    background: linear-gradient(145deg, #050a30, #0b1a5e);
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,89 +12,67 @@ body {
     margin: 0;
 }
 
+/* CALCULATOR CARD */
 .calculator {
-    background-color: #f0f2f5;
+    background: #f4f6fb;
     padding: 25px;
     border-radius: 40px;
-    box-shadow: 0 20px 50px rgba(0,0,0,0.3);
-    width: 320px;
+    width: 340px;
+    box-shadow: 0 25px 60px rgba(0,0,0,0.5);
 }
 
+/* DISPLAY */
 .display {
-    background-color: #e0e5ec;
+    background: #e6e9ef;
     padding: 20px;
+    border-radius: 25px;
     text-align: right;
-    border-radius: 20px;
+    min-height: 110px;
     margin-bottom: 20px;
-    min-height: 100px;
-    box-shadow: inset 4px 4px 8px #bec3c9, inset -4px -4px 8px #ffffff;
+    box-shadow: inset 6px 6px 10px #c9ced6,
+                inset -6px -6px 10px #ffffff;
 }
 
 #equation {
-    font-size: 1.2rem;
-    color: #666;
-    margin-bottom: 5px;
+    font-size: 1.1rem;
+    color: #6b7280;
+    margin-bottom: 8px;
 }
 
 #english-text {
-    font-size: 2rem;
+    font-size: 2.2rem;
     font-weight: bold;
-    color: #3f2b96; /* Purple color from image */
+    color: #3f2b96;
 }
 
+/* BUTTON GRID */
 .buttons {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
-    gap: 12px;
+    gap: 14px;
 }
 
-.btn {
-    padding: 20px;
+/* ALL BUTTONS = WHITE */
+.buttons button {
+    padding: 18px;
     font-size: 1.2rem;
     border: none;
-    border-radius: 15px;
-    background: #e0e5ec;
-    box-shadow: 5px 5px 10px #bec3c9, -5px -5px 10px #ffffff;
+    border-radius: 18px;
+    background: white;
+    box-shadow: 6px 6px 12px #c9ced6,
+                -6px -6px 12px #ffffff;
     cursor: pointer;
-    transition: all 0.2s;
-}
-.btn1{
-  font-weight: bold;
- grid-column: span 1;
-    background: #3f2b96;
-    color: white;
-    font-size: 1.3rem;
-  
-}
-.btn2{
-  padding: 20px;
-    font-size: 1.2rem;
-    border: none;
-    border-radius: 15px;
-    background: #e0e5ec;
-    box-shadow: 5px 5px 10px #bec3c9, -5px -5px 10px #ffffff;
-    cursor: pointer;
-    transition: all 0.2s;
-}
-  
-
-.btn:active {
-    box-shadow: inset 2px 2px 5px #bec3c9, inset -2px -2px 5px #ffffff;
-    transform: scale(0.98);
+    transition: 0.2s;
 }
 
-.btn-op { color: #3f2b96; font-weight: bold; }
-.btn-clear { color: #a52a2a; }
-
-.plus {
-    grid-row: span 1;
+/* CLICK EFFECT */
+.buttons button:active {
+    transform: scale(0.96);
 }
 
-.btn-equal {
-    grid-column: span 4;
-    background: #3f2b96;
-    color: white;
-    font-size: 1.5rem;
-    box-shadow: 0 4px 15px rgba(63, 43, 150, 0.4);
+/* 🔵 ONLY OPERATORS BLUE (÷ × - + =) */
+.op {
+    background: darkblue !important;
+    color: white !important;
+    font-weight: bold;
 }
- 

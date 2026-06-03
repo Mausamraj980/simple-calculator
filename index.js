@@ -1,20 +1,23 @@
-let currentInput = "";
+let currentInput = "0";
 let historyText = "";
 
+// ➕ INPUT (UPDATED + FIXED)
 function appendToDisplay(value) {
-    if (currentInput === "0") currentInput = "";
+    if (currentInput === "0") {
+        currentInput = "";
+    }
+
     currentInput += value;
+
     document.getElementById('equation').innerText = currentInput;
 }
 
-// 🔙 BACKSPACE (FIXED)
+// ⌫ BACKSPACE
 function backspace() {
-    if (currentInput === "" || currentInput === "0") return;
-
-    currentInput = currentInput.slice(0, -1);
-
-    if (currentInput === "") {
+    if (currentInput.length <= 1) {
         currentInput = "0";
+    } else {
+        currentInput = currentInput.slice(0, -1);
     }
 
     document.getElementById('equation').innerText = currentInput;
@@ -24,40 +27,40 @@ function backspace() {
 function clearDisplay() {
     currentInput = "0";
     historyText = "";
+
     document.getElementById('equation').innerText = "0";
     document.getElementById('english-text').innerText = "0";
 }
 
-// 🧮 CALCULATE + INLINE HISTORY
+// 🧮 CALCULATE
 function calculate() {
     try {
-        let result = eval(currentInput);
+        let result = Function("return " + currentInput)();
 
-        // 🔥 history add (top style)
-        historyText =
-            currentInput + " = " + result + "\n" + historyText;
+        historyText = currentInput + " = " + result + "\n" + historyText;
 
         document.getElementById('equation').innerText =
-            historyText + "\n" + currentInput + " = " + result;
+            currentInput + " = " + result;
 
         document.getElementById('english-text').innerText =
-            numberToHindi(result);
+            result;
 
         currentInput = result.toString();
 
-    } catch (e) {
+    } catch (error) {
         document.getElementById('english-text').innerText = "Error";
     }
 }
 
-// 🔢 number to text
-function numberToHindi(n) {
-    const englishWords = {
-        0: "0", 1: "1", 2: "2", 3: "3", 4: "4", 5: "5",
-        6: "6", 7: "7", 8: "8", 9: "9", 10: "10",
-        11: "11", 12: "12", 13: "13", 14: "14", 15: "15",
-        16: "16", 17: "17", 18: "18", 19: "19", 20: "20"
-    };
+// 🔄 +/- TOGGLE
+function toggleSign() {
+    if (currentInput === "0") return;
 
-    return englishWords[n] || n;
+    if (currentInput.startsWith("-")) {
+        currentInput = currentInput.substring(1);
+    } else {
+        currentInput = "-" + currentInput;
+    }
+
+    document.getElementById('equation').innerText = currentInput;
 }
