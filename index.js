@@ -35,15 +35,18 @@ function clearDisplay() {
 // 🧮 CALCULATE
 function calculate() {
     try {
-        let result = Function("return " + currentInput)();
+        let expression = currentInput
+            .replace(/×/g, '*')
+            .replace(/÷/g, '/');
+
+        let result = Function("return " + expression)();
 
         historyText = currentInput + " = " + result + "\n" + historyText;
 
         document.getElementById('equation').innerText =
             currentInput + " = " + result;
 
-        document.getElementById('english-text').innerText =
-            result;
+        document.getElementById('english-text').innerText = result;
 
         currentInput = result.toString();
 
@@ -51,7 +54,6 @@ function calculate() {
         document.getElementById('english-text').innerText = "Error";
     }
 }
-
 // 🔄 +/- TOGGLE
 function toggleSign() {
     if (currentInput === "0") return;
