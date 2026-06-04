@@ -35,13 +35,7 @@ function clearDisplay() {
 // 🧮 CALCULATE
 function calculate() {
     try {
-        let expression = currentInput
-            .replace(/×/g, '*')
-            .replace(/÷/g, '/');
-
-        let result = Function("return " + expression)();
-
-        historyText = currentInput + " = " + result + "\n" + historyText;
+        let result = Function("return " + currentInput)();
 
         document.getElementById('equation').innerText =
             currentInput + " = " + result;
